@@ -1,0 +1,1897 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<base target="_top">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+
+<style>
+
+*{box-sizing:border-box}
+
+html,body{
+  width:100%;
+  min-height:100%;
+  margin:0;
+  padding:0;
+  background:#f5f6f7;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  color:#222;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+
+body{padding:16px}
+
+input,textarea,select,button{
+  touch-action:manipulation!important;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+
+@supports (-webkit-touch-callout:none){
+  input,textarea,select{font-size:16px!important}
+}
+
+.container{
+  width:100%;
+  max-width:500px;
+  margin:0 auto;
+}
+
+.top-back-button{
+  width:100%;
+  margin-bottom:14px;
+  padding:10px 12px;
+  border:0;
+  border-radius:10px;
+  background:#fff;
+  color:#333;
+  font-size:14px;
+  font-weight:600;
+  text-align:left;
+  box-shadow:0 1px 4px rgba(0,0,0,.06);
+  cursor:pointer;
+}
+
+.page-title{
+  margin:4px 2px 14px;
+  font-size:22px;
+  font-weight:700;
+}
+
+.search-section,
+.sheet-section,
+.coupon-card,
+.empty-state{
+  background:#fff;
+  border-radius:12px;
+  padding:14px;
+  margin-bottom:16px;
+  box-shadow:0 1px 4px rgba(0,0,0,.06);
+}
+
+.search-row{
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+.search-input-wrap{
+  position:relative;
+  flex:1;
+  min-width:0;
+}
+
+.search-input{
+  width:100%;
+  padding:11px 38px 11px 12px;
+  border:1px solid #ddd;
+  border-radius:9px;
+  background:#fff;
+  outline:none;
+  font-size:15px;
+}
+
+.search-input:focus{
+  border-color:#999;
+}
+
+.clear-search-button{
+  position:absolute;
+  right:8px;
+  top:50%;
+  transform:translateY(-50%);
+  width:26px;
+  height:26px;
+  border:0;
+  border-radius:50%;
+  background:#eee;
+  color:#666;
+  font-size:16px;
+  line-height:26px;
+  padding:0;
+  cursor:pointer;
+  display:none;
+}
+
+.search-button{
+  flex-shrink:0;
+  padding:11px 14px;
+  border:0;
+  border-radius:9px;
+  background:#222;
+  color:#fff;
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.coupon-card{
+  cursor:pointer;
+}
+
+.coupon-card:active{
+  transform:scale(.995);
+}
+
+.coupon-card-header,
+.sheet-header{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:8px;
+}
+
+.coupon-name{
+  font-size:16px;
+  font-weight:700;
+  line-height:1.3;
+}
+
+.coupon-id,
+.sheet-coupon-id{
+  flex-shrink:0;
+  font-size:11px;
+  color:#999;
+  background:#f2f2f7;
+  padding:3px 6px;
+  border-radius:6px;
+}
+
+.coupon-row{
+  display:flex;
+  align-items:flex-start;
+  gap:6px;
+  margin-top:5px;
+  font-size:14px;
+  line-height:1.4;
+  color:#444;
+}
+
+.coupon-icon{
+  flex-shrink:0;
+  width:20px;
+}
+
+.coupon-code{
+  font-weight:700;
+  letter-spacing:.3px;
+}
+
+.form-row,
+.button-row{
+  display:flex;
+  gap:10px;
+  width:100%;
+  align-items:flex-end;
+}
+
+.form-half,
+.button-row>*{
+  flex:1;
+  min-width:0;
+}
+
+.form-group{
+  margin-bottom:12px;
+}
+
+label{
+  display:block;
+  margin-bottom:5px;
+  font-size:12px;
+  color:#666;
+  font-weight:600;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  border:1px solid #ddd;
+  border-radius:8px;
+  background:#fff;
+  padding:10px;
+  font-size:14px;
+  outline:none;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:#999;
+}
+
+textarea{
+  min-height:80px;
+  resize:vertical;
+}
+
+.readonly-field{
+  background:#f5f5f5;
+  color:#777;
+}
+
+.button-row{
+  margin-top:14px;
+}
+
+.action-button{
+  padding:11px 10px;
+  border:0;
+  border-radius:9px;
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.update-coupon-button{
+  background:#222;
+  color:#fff;
+}
+
+.download-coupon-button{
+  background:#f0f0f0;
+  color:#222;
+}
+
+.regenerate-coupon-button{
+  background:#f0f0f0;
+  color:#222;
+}
+
+.action-button:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+
+.back-button{
+  margin-bottom:12px;
+  border:0;
+  background:none;
+  padding:0;
+  color:#555;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.empty-state{
+  text-align:center;
+  color:#888;
+  font-size:14px;
+  padding:30px 14px;
+}
+
+.hidden{
+  display:none!important;
+}
+
+.toast-container{
+  position:fixed;
+  left:50%;
+  bottom:20px;
+  transform:translateX(-50%);
+  z-index:9999;
+  width:calc(100% - 32px);
+  max-width:460px;
+  pointer-events:none;
+}
+
+.toast{
+  padding:12px 14px;
+  border-radius:10px;
+  background:#222;
+  color:#fff;
+  font-size:14px;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);
+  margin-top:8px;
+}
+
+.toast.error{
+  background:#b42318;
+}
+
+.toast.success{
+  background:#18794e;
+}
+
+@media (max-width:600px){
+  .form-row{
+    flex-direction:row;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <button
+    type="button"
+    class="top-back-button"
+    onclick="backToServiceMenu()"
+  >
+    ← Back to Service Menu
+  </button>
+
+  <div class="page-title">
+    Coupon Management
+  </div>
+
+  <!-- LIST VIEW -->
+
+  <div id="listView">
+
+    <div class="search-section">
+
+      <div class="search-row">
+
+        <div class="search-input-wrap">
+
+          <input
+            type="text"
+            id="couponSearch"
+            class="search-input"
+            placeholder="Search Customer / Coupon / Referral Code"
+            autocomplete="off"
+          >
+
+          <button
+            type="button"
+            id="clearSearchButton"
+            class="clear-search-button"
+            onclick="clearCouponSearch()"
+          >
+            ×
+          </button>
+
+        </div>
+
+        <button
+          type="button"
+          class="search-button"
+          onclick="performCouponSearch()"
+        >
+          Search
+        </button>
+
+      </div>
+
+    </div>
+
+    <div id="couponList"></div>
+
+  </div>
+
+
+  <!-- SHEET VIEW -->
+
+  <div id="sheetView" class="hidden">
+
+    <div class="sheet-section">
+
+      <button
+        type="button"
+        class="back-button"
+        onclick="closeCouponSheet()"
+      >
+        ← Back to Coupons
+      </button>
+
+      <div class="sheet-header">
+
+        <div>
+          <div class="coupon-name" id="sheetCustomerName">
+            Coupon
+          </div>
+        </div>
+
+        <div
+          class="sheet-coupon-id"
+          id="sheetCouponId"
+        >
+        </div>
+
+      </div>
+
+
+      <div class="form-row">
+
+        <div class="form-half">
+
+          <div class="form-group">
+
+            <label for="sheetCustomerId">
+              Customer ID
+            </label>
+
+            <input
+              type="text"
+              id="sheetCustomerId"
+              class="readonly-field"
+              readonly
+            >
+
+          </div>
+
+        </div>
+
+        <div class="form-half">
+
+          <div class="form-group">
+
+            <label for="sheetReferralCode">
+              Referral Code
+            </label>
+
+            <input
+              type="text"
+              id="sheetReferralCode"
+              class="readonly-field"
+              readonly
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="form-row">
+
+        <div class="form-half">
+
+          <div class="form-group">
+
+            <label for="sheetJobType">
+              Job Type
+            </label>
+
+            <input
+              type="text"
+              id="sheetJobType"
+              class="readonly-field"
+              readonly
+            >
+
+          </div>
+
+        </div>
+
+        <div class="form-half">
+
+          <div class="form-group">
+
+            <label for="sheetCustomerNameInput">
+              Customer Name
+            </label>
+
+            <input
+              type="text"
+              id="sheetCustomerNameInput"
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="form-row">
+
+        <div class="form-half">
+
+          <div class="form-group">
+
+            <label for="sheetDiscount">
+              Discount
+            </label>
+
+            <input
+              type="number"
+              id="sheetDiscount"
+              min="0"
+              step="0.01"
+            >
+
+          </div>
+
+        </div>
+
+        <div class="form-half">
+
+          <div class="form-group">
+
+            <label for="sheetCommission">
+              Commission
+            </label>
+
+            <input
+              type="number"
+              id="sheetCommission"
+              min="0"
+              step="0.01"
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="form-row">
+
+        <div class="form-half">
+
+          <div class="form-group">
+
+            <label for="sheetServicePrice">
+              Service Price
+            </label>
+
+            <input
+              type="number"
+              id="sheetServicePrice"
+              min="0"
+              step="0.01"
+            >
+
+          </div>
+
+        </div>
+
+        <div class="form-half">
+
+          <div class="form-group">
+
+            <label for="sheetCreditAmount">
+              Credit Amount
+            </label>
+
+            <input
+              type="number"
+              id="sheetCreditAmount"
+              min="0"
+              step="0.01"
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="form-row">
+
+        <div class="form-half">
+
+          <div class="form-group">
+
+            <label for="sheetValidFrom">
+              Valid From
+            </label>
+
+            <input
+              type="date"
+              id="sheetValidFrom"
+            >
+
+          </div>
+
+        </div>
+
+        <div class="form-half">
+
+          <div class="form-group">
+
+            <label for="sheetValidUntil">
+              Valid Until
+            </label>
+
+            <input
+              type="date"
+              id="sheetValidUntil"
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="sheetCreatedBy">
+          Created By
+        </label>
+
+        <input
+          type="text"
+          id="sheetCreatedBy"
+          class="readonly-field"
+          readonly
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="sheetCreatedAt">
+          Created At
+        </label>
+
+        <input
+          type="text"
+          id="sheetCreatedAt"
+          class="readonly-field"
+          readonly
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="sheetUpdatedAt">
+          Update At
+        </label>
+
+        <input
+          type="text"
+          id="sheetUpdatedAt"
+          class="readonly-field"
+          readonly
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="sheetPngGeneratedAt">
+          PNG Generated At
+        </label>
+
+        <input
+          type="text"
+          id="sheetPngGeneratedAt"
+          class="readonly-field"
+          readonly
+        >
+
+      </div>
+
+
+      <div class="button-row">
+
+        <button
+          type="button"
+          class="action-button download-coupon-button"
+          id="downloadCouponButton"
+          onclick="downloadCoupon()"
+        >
+          Download Coupon
+        </button>
+
+        <button
+          type="button"
+          class="action-button regenerate-coupon-button"
+          id="regenerateCouponButton"
+          onclick="regenerateCoupon()"
+        >
+          Regenerate PNG
+        </button>
+
+      </div>
+
+
+      <div class="button-row">
+
+        <button
+          type="button"
+          class="action-button update-coupon-button"
+          id="updateCouponButton"
+          onclick="updateCoupon()"
+        >
+          Update Coupon
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div
+  id="toastContainer"
+  class="toast-container"
+></div>
+
+
+<script>
+
+/*************************************************
+ * GLOBAL VARIABLES
+ *************************************************/
+
+let couponSearchRequestId = 0;
+let updateCouponRequestId = 0;
+let downloadCouponRequestId = 0;
+let regenerateCouponRequestId = 0;
+
+let sessionToken = '';
+let sessionReady = false;
+let currentCoupon = null;
+
+
+/*************************************************
+ * INITIALIZE
+ *************************************************/
+
+document.addEventListener(
+  'DOMContentLoaded',
+  function() {
+
+    document
+      .getElementById('couponSearch')
+      .addEventListener(
+        'input',
+        updateClearSearchButton
+      );
+
+    document
+      .getElementById('couponSearch')
+      .addEventListener(
+        'keydown',
+        function(event) {
+          if (event.key === 'Enter') {
+            performCouponSearch();
+          }
+        }
+      );
+
+  }
+);
+
+/*************************************************
+ * SEARCH COUPONS
+ *************************************************/
+
+function performCouponSearch() {
+
+  const input =
+    document.getElementById('couponSearch');
+
+  const query =
+    String(input.value || '').trim();
+
+  updateClearSearchButton();
+
+  const requestId =
+    ++couponSearchRequestId;
+
+  showToast(
+    query
+      ? 'Searching coupons...'
+      : 'Loading coupons...',
+    'success',
+    1500
+  );
+
+  window.parent.postMessage(
+    {
+      type: 'RICHCAN_SEARCH_COUPONS',
+      token: sessionToken,
+      query: query,
+      requestId: requestId
+    },
+    '*'
+  );
+}
+
+
+/*************************************************
+ * CLEAR SEARCH
+ *************************************************/
+
+function clearCouponSearch() {
+
+  const input =
+    document.getElementById('couponSearch');
+
+  input.value = '';
+
+  updateClearSearchButton();
+
+  performCouponSearch();
+
+  input.focus();
+
+}
+
+
+/*************************************************
+ * UPDATE CLEAR BUTTON
+ *************************************************/
+
+function updateClearSearchButton() {
+
+  const input =
+    document.getElementById('couponSearch');
+
+  const button =
+    document.getElementById('clearSearchButton');
+
+  if (!input || !button) {
+    return;
+  }
+
+  button.style.display =
+    input.value.trim()
+      ? 'block'
+      : 'none';
+
+}
+
+
+/*************************************************
+ * RENDER COUPON LIST
+ *************************************************/
+
+function renderCouponList(coupons) {
+
+  const container =
+    document.getElementById('couponList');
+
+  container.innerHTML = '';
+
+  if (!coupons || !coupons.length) {
+
+    const empty =
+      document.createElement('div');
+
+    empty.className = 'empty-state';
+
+    empty.textContent =
+      'No coupons found.';
+
+    container.appendChild(empty);
+
+    return;
+  }
+
+  coupons.forEach(
+    function(coupon) {
+
+      const card =
+        document.createElement('div');
+
+      card.className =
+        'coupon-card';
+
+      card.onclick =
+        function() {
+          openCouponSheet(coupon);
+        };
+
+
+      const header =
+        document.createElement('div');
+
+      header.className =
+        'coupon-card-header';
+
+
+      const name =
+        document.createElement('div');
+
+      name.className =
+        'coupon-name';
+
+      name.textContent =
+        coupon.customerName ||
+        'Unknown Customer';
+
+
+      const id =
+        document.createElement('div');
+
+      id.className =
+        'coupon-id';
+
+      id.textContent =
+        coupon.couponId || '';
+
+
+      header.appendChild(name);
+      header.appendChild(id);
+
+      card.appendChild(header);
+
+
+      appendCouponRow(
+        card,
+        '👤',
+        (coupon.customerId || '') +
+        (
+          coupon.jobType
+            ? ' | ' + coupon.jobType
+            : ''
+        )
+      );
+
+
+      appendCouponRow(
+        card,
+        '🎟️',
+        coupon.referralCode || 'No Referral Code',
+        true
+      );
+
+
+      appendCouponRow(
+        card,
+        '💰',
+        'Discount $' +
+        Number(
+          coupon.discount || 0
+        ).toFixed(2) +
+        ' | Commission $' +
+        Number(
+          coupon.commission || 0
+        ).toFixed(2)
+      );
+
+
+      appendCouponRow(
+        card,
+        '💵',
+        'Service Price $' +
+        Number(
+          coupon.servicePrice || 0
+        ).toFixed(2) +
+        ' | Credit $' +
+        Number(
+          coupon.creditAmount || 0
+        ).toFixed(2)
+      );
+
+
+      appendCouponRow(
+        card,
+        '📅',
+        'Valid: ' +
+        (
+          coupon.validFrom ||
+          'N/A'
+        ) +
+        ' → ' +
+        (
+          coupon.validUntil ||
+          'N/A'
+        )
+      );
+
+
+      container.appendChild(card);
+
+    }
+  );
+
+}
+
+
+/*************************************************
+ * APPEND COUPON ROW
+ *************************************************/
+
+function appendCouponRow(
+  card,
+  icon,
+  text,
+  code
+) {
+
+  const row =
+    document.createElement('div');
+
+  row.className =
+    'coupon-row';
+
+
+  const iconElement =
+    document.createElement('span');
+
+  iconElement.className =
+    'coupon-icon';
+
+  iconElement.textContent =
+    icon;
+
+
+  const textElement =
+    document.createElement('span');
+
+  if (code) {
+    textElement.className =
+      'coupon-code';
+  }
+
+  textElement.textContent =
+    text || '';
+
+
+  row.appendChild(iconElement);
+  row.appendChild(textElement);
+
+  card.appendChild(row);
+
+}
+
+
+/*************************************************
+ * OPEN COUPON SHEET
+ *************************************************/
+
+function openCouponSheet(coupon) {
+
+  currentCoupon =
+    coupon || null;
+
+  if (!currentCoupon) {
+    showToast(
+      'No coupon selected.',
+      'error',
+      3000
+    );
+    return;
+  }
+
+
+  document
+    .getElementById('listView')
+    .classList.add('hidden');
+
+  document
+    .getElementById('sheetView')
+    .classList.remove('hidden');
+
+
+  document
+    .getElementById('sheetCustomerName')
+    .textContent =
+      currentCoupon.customerName ||
+      'Coupon';
+
+
+  document
+    .getElementById('sheetCouponId')
+    .textContent =
+      currentCoupon.couponId || '';
+
+
+  setValue(
+    'sheetCustomerId',
+    currentCoupon.customerId
+  );
+
+  setValue(
+    'sheetReferralCode',
+    currentCoupon.referralCode
+  );
+
+  setValue(
+    'sheetJobType',
+    currentCoupon.jobType
+  );
+
+  setValue(
+    'sheetCustomerNameInput',
+    currentCoupon.customerName
+  );
+
+  setValue(
+    'sheetDiscount',
+    currentCoupon.discount
+  );
+
+  setValue(
+    'sheetCommission',
+    currentCoupon.commission
+  );
+
+  setValue(
+    'sheetServicePrice',
+    currentCoupon.servicePrice
+  );
+
+  setValue(
+    'sheetCreditAmount',
+    currentCoupon.creditAmount
+  );
+
+  setValue(
+    'sheetValidFrom',
+    currentCoupon.validFrom
+  );
+
+  setValue(
+    'sheetValidUntil',
+    currentCoupon.validUntil
+  );
+
+  setValue(
+    'sheetCreatedBy',
+    currentCoupon.createdBy
+  );
+
+  setValue(
+    'sheetCreatedAt',
+    currentCoupon.createdAt
+  );
+
+  setValue(
+    'sheetUpdatedAt',
+    currentCoupon.updateAt
+  );
+
+  setValue(
+    'sheetPngGeneratedAt',
+    currentCoupon.pngGeneratedAt
+  );
+
+}
+
+
+/*************************************************
+ * CLOSE COUPON SHEET
+ *************************************************/
+
+function closeCouponSheet() {
+
+  currentCoupon = null;
+
+  document
+    .getElementById('sheetView')
+    .classList.add('hidden');
+
+  document
+    .getElementById('listView')
+    .classList.remove('hidden');
+
+}
+
+
+/*************************************************
+ * SET VALUE
+ *************************************************/
+
+function setValue(id, value) {
+
+  const element =
+    document.getElementById(id);
+
+  if (!element) {
+    return;
+  }
+
+  element.value =
+    value == null
+      ? ''
+      : value;
+
+}
+
+
+/*************************************************
+ * UPDATE COUPON
+ *************************************************/
+
+function updateCoupon() {
+
+  if (!currentCoupon) {
+
+    showToast(
+      'No coupon selected.',
+      'error',
+      3000
+    );
+
+    return;
+  }
+
+
+  const data = {
+
+    couponId:
+      currentCoupon.couponId,
+
+    customerId:
+      currentCoupon.customerId,
+
+    customerName:
+      document
+        .getElementById(
+          'sheetCustomerNameInput'
+        )
+        .value
+        .trim(),
+
+    discount:
+      Number(
+        document
+          .getElementById(
+            'sheetDiscount'
+          )
+          .value || 0
+      ),
+
+    commission:
+      Number(
+        document
+          .getElementById(
+            'sheetCommission'
+          )
+          .value || 0
+      ),
+
+    servicePrice:
+      Number(
+        document
+          .getElementById(
+            'sheetServicePrice'
+          )
+          .value || 0
+      ),
+
+    creditAmount:
+      Number(
+        document
+          .getElementById(
+            'sheetCreditAmount'
+          )
+          .value || 0
+      ),
+
+    validFrom:
+      document
+        .getElementById(
+          'sheetValidFrom'
+        )
+        .value,
+
+    validUntil:
+      document
+        .getElementById(
+          'sheetValidUntil'
+        )
+        .value
+
+  };
+
+
+  if (!data.customerName) {
+
+    showToast(
+      'Customer Name is required.',
+      'error',
+      3000
+    );
+
+    return;
+  }
+
+
+  const button =
+    document.getElementById(
+      'updateCouponButton'
+    );
+
+  if (button) {
+    button.disabled = true;
+    button.textContent = 'Updating...';
+  }
+
+
+ window.parent.postMessage(
+  {
+    type: 'RICHCAN_UPDATE_COUPON',
+    token: sessionToken,
+    data: data,
+    requestId: ++updateCouponRequestId
+  },
+  '*'
+);
+
+}
+
+
+/*************************************************
+ * DOWNLOAD COUPON
+ *************************************************/
+
+function downloadCoupon() {
+
+  if (!currentCoupon) {
+
+    showToast(
+      'No coupon selected.',
+      'error',
+      3000
+    );
+
+    return;
+  }
+
+
+  const couponId =
+    String(
+      currentCoupon.couponId || ''
+    ).trim();
+
+
+  if (!couponId) {
+
+    showToast(
+      'Coupon ID is missing.',
+      'error',
+      3000
+    );
+
+    return;
+  }
+
+
+  const button =
+    document.getElementById(
+      'downloadCouponButton'
+    );
+
+  if (button) {
+
+    button.disabled = true;
+
+    button.textContent =
+      'Preparing Coupon...';
+
+  }
+
+
+  const requestId =
+    ++downloadCouponRequestId;
+
+
+window.parent.postMessage(
+  {
+    type: 'RICHCAN_DOWNLOAD_COUPON',
+    token: sessionToken,
+    data: {
+      couponId: couponId
+    },
+    requestId: requestId
+  },
+  '*'
+);
+
+}
+
+/*************************************************
+ * REGENERATE PNG
+ *************************************************/
+
+function regenerateCoupon() {
+
+  if (!currentCoupon) {
+
+    showToast(
+      'No coupon selected.',
+      'error',
+      3000
+    );
+
+    return;
+  }
+
+
+  const couponId =
+    String(
+      currentCoupon.couponId || ''
+    ).trim();
+
+
+  if (!couponId) {
+
+    showToast(
+      'Coupon ID is missing.',
+      'error',
+      3000
+    );
+
+    return;
+  }
+
+
+  const button =
+    document.getElementById(
+      'regenerateCouponButton'
+    );
+
+  if (button) {
+
+    button.disabled = true;
+
+    button.textContent =
+      'Generating...';
+
+  }
+
+
+  const requestId =
+    ++regenerateCouponRequestId;
+
+
+  window.parent.postMessage(
+    {
+      type:
+        'RICHCAN_REGENERATE_COUPON_PNG',
+
+      token:
+        sessionToken,
+
+      data: {
+        couponId:
+          couponId
+      },
+
+      requestId:
+        requestId
+    },
+    '*'
+  );
+
+}
+
+
+
+
+/*************************************************
+ * MESSAGE LISTENER
+ *************************************************/
+
+window.addEventListener(
+  'message',
+  function(event) {
+
+    if (!event.data) {
+      return;
+    }
+
+    const type =
+      event.data.type;
+
+
+    if (
+  type ===
+  'RICHCAN_SESSION'
+) {
+
+  sessionToken =
+    event.data.token || '';
+
+  if (
+    sessionToken &&
+    !sessionReady
+  ) {
+
+    sessionReady = true;
+
+    performCouponSearch();
+
+  }
+
+  return;
+}
+
+
+    if (
+      type ===
+      'RICHCAN_SEARCH_COUPONS_RESULT'
+    ) {
+
+      if (
+        event.data.requestId !==
+        couponSearchRequestId
+      ) {
+        return;
+      }
+
+      renderCouponList(
+        event.data.coupons || []
+      );
+
+      return;
+    }
+
+
+    if (
+      type ===
+      'RICHCAN_UPDATE_COUPON_RESULT'
+    ) {
+
+      handleUpdateCouponResult(
+        event.data.result,
+        event.data.error
+      );
+
+      return;
+    }
+
+
+    if (
+      type ===
+      'RICHCAN_DOWNLOAD_COUPON_RESULT'
+    ) {
+
+      handleDownloadCouponResult(
+        event.data.result,
+        event.data.error
+      );
+
+      return;
+    }
+
+
+    if (
+      type ===
+      'RICHCAN_REGENERATE_COUPON_PNG_RESULT'
+    ) {
+
+      handleRegenerateCouponResult(
+        event.data.result,
+        event.data.error
+      );
+
+      return;
+    }
+
+  }
+);
+
+
+/*************************************************
+ * UPDATE RESULT
+ *************************************************/
+
+function handleUpdateCouponResult(
+  result,
+  error
+) {
+
+  const button =
+    document.getElementById(
+      'updateCouponButton'
+    );
+
+  if (button) {
+
+    button.disabled = false;
+
+    button.textContent =
+      'Update Coupon';
+
+  }
+
+
+  if (
+    !result ||
+    result.success !== true
+  ) {
+
+    showToast(
+      error ||
+      (
+        result &&
+        result.message
+      ) ||
+      'Unable to update coupon.',
+      'error',
+      5000
+    );
+
+    return;
+  }
+
+
+  showToast(
+    'Coupon updated successfully.',
+    'success',
+    3000
+  );
+
+
+  if (result.coupon) {
+
+    currentCoupon =
+      result.coupon;
+
+    openCouponSheet(
+      result.coupon
+    );
+
+  }
+
+
+  performCouponSearch();
+
+}
+
+
+/*************************************************
+ * DOWNLOAD RESULT
+ *************************************************/
+
+function handleDownloadCouponResult(
+  result,
+  error
+) {
+
+  const button =
+    document.getElementById(
+      'downloadCouponButton'
+    );
+
+  if (button) {
+
+    button.disabled = false;
+
+    button.textContent =
+      'Download Coupon';
+
+  }
+
+
+  if (
+    !result ||
+    result.success !== true
+  ) {
+
+    showToast(
+      error ||
+      (
+        result &&
+        result.message
+      ) ||
+      'Unable to download coupon.',
+      'error',
+      5000
+    );
+
+    return;
+  }
+
+
+  if (!result.dataUrl) {
+
+    showToast(
+      'Coupon image data is missing.',
+      'error',
+      5000
+    );
+
+    return;
+  }
+
+
+  const link =
+    document.createElement('a');
+
+  link.href =
+    result.dataUrl;
+
+  link.download =
+    result.fileName ||
+    'coupon.png';
+
+  document
+    .body
+    .appendChild(link);
+
+  link.click();
+
+  document
+    .body
+    .removeChild(link);
+
+
+  showToast(
+    'Coupon downloaded successfully.',
+    'success',
+    3000
+  );
+
+}
+
+
+/*************************************************
+ * REGENERATE RESULT
+ *************************************************/
+
+function handleRegenerateCouponResult(
+  result,
+  error
+) {
+
+  const button =
+    document.getElementById(
+      'regenerateCouponButton'
+    );
+
+  if (button) {
+
+    button.disabled = false;
+
+    button.textContent =
+      'Regenerate PNG';
+
+  }
+
+
+  if (
+    !result ||
+    result.success !== true
+  ) {
+
+    showToast(
+      error ||
+      (
+        result &&
+        result.message
+      ) ||
+      'Unable to regenerate coupon PNG.',
+      'error',
+      5000
+    );
+
+    return;
+  }
+
+
+  showToast(
+    'Coupon PNG regenerated successfully.',
+    'success',
+    3000
+  );
+
+
+  if (
+    result.pngGeneratedAt &&
+    currentCoupon
+  ) {
+
+    currentCoupon.pngGeneratedAt =
+      result.pngGeneratedAt;
+
+    setValue(
+      'sheetPngGeneratedAt',
+      result.pngGeneratedAt
+    );
+
+  }
+
+}
+
+
+/*************************************************
+ * BACK TO SERVICE MENU
+ *************************************************/
+
+function backToServiceMenu() {
+
+  window.parent.postMessage(
+    {
+      type: 'RICHCAN_NAVIGATE',
+      page: 'index'
+    },
+    '*'
+  );
+
+}
+
+
+/*************************************************
+ * TOAST
+ *************************************************/
+
+function showToast(
+  message,
+  type,
+  duration
+) {
+
+  const container =
+    document.getElementById(
+      'toastContainer'
+    );
+
+  if (!container) {
+    return;
+  }
+
+
+  const toast =
+    document.createElement('div');
+
+  toast.className =
+    'toast' +
+    (
+      type
+        ? ' ' + type
+        : ''
+    );
+
+  toast.textContent =
+    message || '';
+
+
+  container.appendChild(toast);
+
+
+  setTimeout(
+    function() {
+
+      if (
+        toast &&
+        toast.parentNode
+      ) {
+
+        toast.parentNode.removeChild(
+          toast
+        );
+
+      }
+
+    },
+    duration || 3000
+  );
+
+}
+
+</script>
+
+</body>
+</html>
