@@ -1,0 +1,3783 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <base target="_top">
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>RICHCAN MECHANICAL</title>
+
+
+  <style>
+
+
+/* =========================================================
+   RICHCAN MECHANICAL
+   Mobile Service
+   LOGIN CSS V4
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  overflow: auto;
+
+  background: #fff;
+
+  font-family: Arial, Helvetica, sans-serif;
+  color: #222;
+  -webkit-text-size-adjust: 100%;
+
+  
+}
+
+
+/* =========================================================
+   LOGIN SCREEN
+   ========================================================= */
+
+#loginScreen {
+  display: none;
+
+  position: fixed;
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+
+  background: #fff;
+}
+
+
+/* =========================================================
+   LOGIN CONTAINER
+   ========================================================= */
+
+/*
+ * MOBILE:
+ * width  = 80% of screen
+ * height = 80% of screen
+ *
+ * The container itself is centered.
+ */
+
+.login-container {
+  position: absolute;
+
+  left: 50%;
+  top: 30px;
+
+  transform: translateX(-50%);
+
+  width: 80vw;
+  max-width: none;
+
+  margin: 0;
+  padding: 0;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header {
+  width: 100%;
+
+  margin: 0 0 24px 0;
+
+  text-align: center;
+}
+
+.brand {
+  margin: 0;
+
+  font-size: 40px;
+  line-height: 1.2;
+
+  font-weight: 700;
+
+  letter-spacing: 0.8px;
+}
+
+.subtitle {
+  margin-top: 8px;
+
+  font-size: 27px;
+  line-height: 1.3;
+
+  color: #666;
+}
+
+
+/* =========================================================
+   LOGIN BOX
+   ========================================================= */
+
+/*
+ * The white card fills the 80vw x 80vh container.
+ *
+ * IMPORTANT:
+ * The contents inside remain normal-flow elements.
+ * They are NOT stretched vertically.
+ */
+
+.login-box {
+  display: block;
+
+  width: 100%;
+
+  margin: 0;
+  padding: 34px 24px;
+
+  border: 1px solid #ddd;
+  border-radius: 16px;
+
+  background: #fff;
+
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.10);
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.login-box form {
+  display: block;
+
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+}
+
+
+/* =========================================================
+   FIELD
+   ========================================================= */
+
+.field {
+  display: block;
+
+  width: 100%;
+
+  margin: 0 0 22px 0;
+  padding: 0;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.field label {
+  display: block;
+
+  width: 100%;
+
+  margin: 0 0 10px 0;
+
+  font-size: 22px;
+  line-height: 1.3;
+
+  font-weight: 600;
+}
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.field input {
+  display: block;
+
+  width: 100%;
+
+  height: 60px;
+
+  margin: 0;
+  padding: 12px 15px;
+
+  border: 1px solid #aaa;
+  border-radius: 10px;
+
+  background: #fff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 19px !important;
+  line-height: 1.2;
+
+  color: #222;
+
+  outline: none;
+}
+
+.field input:focus {
+  border-color: #555;
+}
+
+
+/* =========================================================
+   LOGIN BUTTON
+   ========================================================= */
+
+.login-button {
+  display: block;
+
+  width: 100%;
+
+  height: 60px;
+
+  margin: 8px 0 0 0;
+  padding: 0 16px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #222;
+  color: #fff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 22px;
+  line-height: 1;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.login-button:disabled {
+  background: #999;
+  cursor: default;
+}
+
+
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
+.message {
+  width: 100%;
+
+  margin: 18px 0 0 0;
+
+  text-align: center;
+
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.error {
+  color: #b00020;
+}
+
+.loading {
+  color: #666;
+}
+
+
+/* =========================================================
+   APP SCREEN
+   ========================================================= */
+
+#appScreen {
+  display: none;
+
+  position: fixed;
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  overflow: auto;
+}
+
+#appContent {
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  overflow: auto;
+}
+
+#appContent iframe {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+}
+
+
+/* =========================================================
+   SESSION EXPIRED
+   ========================================================= */
+
+#sessionExpired {
+  display: none;
+
+  position: fixed;
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  margin: 0;
+  padding: 80px 20px;
+
+  text-align: center;
+
+  overflow: hidden;
+
+  background: #fff;
+}
+
+#sessionExpired h2 {
+  margin: 0 0 10px 0;
+}
+
+#sessionExpired p {
+  margin: 0;
+}
+
+#sessionExpired button {
+  margin-top: 20px;
+
+  padding: 12px 24px;
+
+  border: 1px solid #999;
+  border-radius: 8px;
+
+  background: #fff;
+
+  font-size: 16px;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media screen and (min-width: 1000px) {
+
+  .login-container {
+    width: 520px;
+
+    left: 50%;
+    top: 30px;
+
+    transform: translateX(-50%);
+  }
+
+  .brand {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 19px;
+  }
+
+  .login-box {
+    padding: 38px 32px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media screen and (max-width: 600px) {
+
+  .login-container {
+    width: 80vw;
+    max-width: none;
+
+    left: 50%;
+    top: 30px;
+
+    transform: translateX(-50%);
+  }
+
+  .brand {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 17px;
+  }
+
+  .login-box {
+    padding: 32px 20px;
+  }
+
+  .field input,
+  .login-button {
+    height: 60px;
+  }
+
+  .field input {
+    font-size: 19px;
+  }
+
+  .login-button {
+    font-size: 19px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media screen and (max-width: 380px) {
+
+  .login-container {
+    width: 80vw;
+
+    left: 50%;
+    top: 30px;
+
+    transform: translateX(-50%);
+  }
+
+  .login-box {
+    padding: 26px 16px;
+  }
+
+  .brand {
+    font-size: 25px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .field input,
+  .login-button {
+    height: 56px;
+  }
+}
+
+/* 彻底禁止 iOS 父级页面的双击与手势缩放 */
+html, body {
+  /*touch-action: manipulation !important;*/
+  -webkit-text-size-adjust: 100% !important;
+}
+
+/* 强制所有输入框在 iOS 下不触发聚焦放大 */
+@supports (-webkit-touch-callout: none) {
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+ 
+
+
+  <!-- =========================
+       Login Screen
+       ========================= -->
+
+  <div id="loginScreen">
+
+    <div class="login-container">
+
+
+      <div class="header">
+
+        <div class="brand">
+
+          RICHCAN MECHANICAL
+
+        </div>
+
+
+        <div class="subtitle">
+
+          Mobile Service
+
+        </div>
+
+      </div>
+
+
+      <div class="login-box">
+
+
+        <form onsubmit="login(event)">
+
+
+          <div class="field">
+
+            <label for="username">
+
+              Username
+
+            </label>
+
+
+            <input
+              type="text"
+              id="username"
+              autocomplete="username"
+              autocapitalize="none"
+              required>
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="password">
+
+              Password
+
+            </label>
+
+
+            <input
+              type="password"
+              id="password"
+              autocomplete="current-password"
+              required>
+
+          </div>
+
+
+          <button
+            type="submit"
+            id="loginButton"
+            class="login-button">
+
+            Login
+
+          </button>
+
+
+          <div
+            id="loginMessage"
+            class="message">
+
+          </div>
+
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       App
+       ========================= -->
+
+  <div id="appScreen">
+
+    <div id="appContent"></div>
+
+  </div>
+
+
+  <!-- =========================
+       Session Expired
+       ========================= -->
+
+  <div id="sessionExpired">
+
+    <h2>
+
+      Session Expired
+
+    </h2>
+
+
+    <p>
+
+      Your session has expired.
+      Please login again.
+
+    </p>
+
+
+    <button
+      onclick="showLogin()">
+
+      Login Again
+
+    </button>
+
+  </div>
+
+
+  <script>
+
+
+/* =====================================================
+       Session
+===================================================== */
+const SESSION_KEY = 'richcan_session_token';
+const SESSION_DB_NAME = 'RICHCAN_SESSION_DB';
+const SESSION_STORE_NAME = 'session';
+
+function openSessionDB() {
+  return new Promise(function(resolve, reject) {
+
+    const request =
+      indexedDB.open(SESSION_DB_NAME, 1);
+
+    request.onupgradeneeded = function(event) {
+
+      const db = event.target.result;
+
+      if (!db.objectStoreNames.contains(SESSION_STORE_NAME)) {
+        db.createObjectStore(SESSION_STORE_NAME);
+      }
+
+    };
+
+    request.onsuccess = function(event) {
+      resolve(event.target.result);
+    };
+
+    request.onerror = function() {
+      reject(request.error);
+    };
+
+  });
+}
+
+function saveSessionToken(token) {
+  return openSessionDB().then(function(db) {
+
+    return new Promise(function(resolve, reject) {
+
+      const transaction =
+        db.transaction(SESSION_STORE_NAME, 'readwrite');
+
+      const store =
+        transaction.objectStore(SESSION_STORE_NAME);
+
+      const request =
+        store.put(token, 'sessionToken');
+
+      request.onerror = function() {
+        console.error(
+          'Store put failed:',
+          request.error
+        );
+
+        reject(request.error);
+      };
+
+      transaction.oncomplete = function() {
+        resolve();
+      };
+
+      transaction.onerror = function() {
+        reject(transaction.error);
+      };
+
+      transaction.onabort = function() {
+        reject(
+          transaction.error ||
+          new Error(
+            'IndexedDB transaction aborted.'
+          )
+        );
+      };
+
+    });
+
+  }).then(function() {
+
+    if (
+      navigator.storage &&
+      navigator.storage.persist
+    ) {
+
+      navigator.storage.persist()
+        .then(function(persistent) {
+
+          console.log(
+            'Storage persistent state:',
+            persistent
+          );
+
+        })
+        .catch(function(error) {
+
+          console.warn(
+            'Storage persist request warning:',
+            error
+          );
+
+        });
+
+    }
+
+  });
+}
+
+function getSessionTokenFromDB() {
+  return openSessionDB().then(function(db) {
+
+    return new Promise(function(resolve, reject) {
+
+      const transaction =
+        db.transaction(SESSION_STORE_NAME, 'readonly');
+
+      const store =
+        transaction.objectStore(SESSION_STORE_NAME);
+
+      const request =
+        store.get('sessionToken');
+
+      request.onsuccess = function() {
+        resolve(request.result || '');
+      };
+
+      request.onerror = function() {
+        reject(request.error);
+      };
+
+    });
+
+  });
+}
+
+function clearSessionToken() {
+  return openSessionDB().then(function(db) {
+
+    return new Promise(function(resolve, reject) {
+
+      const transaction =
+        db.transaction(SESSION_STORE_NAME, 'readwrite');
+
+      const store =
+        transaction.objectStore(SESSION_STORE_NAME);
+
+      const request =
+        store.delete('sessionToken');
+
+      request.onsuccess = function() {
+        resolve();
+      };
+
+      request.onerror = function() {
+        reject(request.error);
+      };
+
+    });
+
+  });
+}
+
+
+    /* =====================================================
+       Get Session Token
+       ===================================================== */
+
+function getSessionToken() {
+
+  return getSessionTokenFromDB();
+
+}
+
+
+    /* =====================================================
+       Get Requested Page
+       ===================================================== */
+
+    function getRequestedPage() {
+
+      const params =
+        new URLSearchParams(
+          window.location.search
+        );
+
+
+      const page =
+        params.get('page');
+
+
+      if (
+        page === 'boiler'
+      ) {
+
+        return 'boiler';
+
+      }
+
+
+      if (
+        page === 'fireplace'
+      ) {
+
+        return 'fireplace';
+
+      }
+
+
+      return 'index';
+
+    }
+
+
+    /* =====================================================
+       Start App
+       ===================================================== */
+function startApp() {
+
+  getSessionToken()
+    .then(function(token) {
+
+      
+
+      /*
+       * No existing session.
+       */
+
+      if (!token) {
+
+        showLogin();
+
+        return;
+
+      }
+
+      /*
+       * Existing session.
+       */
+
+      google.script.run
+
+        .withSuccessHandler(
+          function(result) {
+
+            console.log(
+              'Existing session check:',
+              result
+            );
+
+            if (
+              result &&
+              result.loggedIn === true
+            ) {
+
+              loadProtectedPage(
+                token,
+                getRequestedPage()
+              );
+
+            } else {
+
+              clearLocalSession();
+
+              showLogin();
+
+            }
+
+          }
+        )
+
+        .withFailureHandler(
+          function(error) {
+
+            console.error(
+              'Session check failed:',
+              error
+            );
+
+            clearLocalSession();
+
+            showLogin();
+
+          }
+        )
+
+        .checkSession(
+          token
+        );
+
+    })
+    .catch(function(error) {
+
+      console.error(
+        'Failed to read session token:',
+        error
+      );
+
+      clearLocalSession();
+
+      showLogin();
+
+    });
+
+}
+    
+
+
+    /* =====================================================
+       Login
+       ===================================================== */
+
+    function login(event) {
+
+      event.preventDefault();
+
+
+      const username =
+        document
+          .getElementById(
+            'username'
+          )
+          .value
+          .trim();
+
+
+      const password =
+        document
+          .getElementById(
+            'password'
+          )
+          .value;
+
+
+      const button =
+        document.getElementById(
+          'loginButton'
+        );
+
+
+      const message =
+        document.getElementById(
+          'loginMessage'
+        );
+
+
+      if (
+        !username ||
+        !password
+      ) {
+
+        message.className =
+          'message error';
+
+        message.innerText =
+          'Please enter username and password.';
+
+        return;
+
+      }
+
+
+      button.disabled = true;
+
+      button.innerText =
+        'Signing in...';
+
+
+      message.className =
+        'message loading';
+
+      message.innerText =
+        '';
+
+
+      /*
+       * loginUser() performs:
+       *
+       * 1. Username verification
+       * 2. Password verification
+       * 3. Status verification
+       * 4. Session creation
+       */
+
+      google.script.run
+
+        .withSuccessHandler(
+          function(result) {
+
+            console.log(
+              'Login result:',
+              result
+            );
+
+
+            if (
+              result &&
+              result.success
+            ) {
+
+              /*
+ * Save session token
+ */
+saveSessionToken(result.sessionToken)
+  .then(function() {
+
+    console.log(
+      'Session token saved to IndexedDB.'
+    );
+
+    /*
+     * Save user information
+     */
+localStorage.setItem('richcan_userId', result.userId || '');
+localStorage.setItem('richcan_username', result.username || '');
+localStorage.setItem('richcan_name', result.name || '');
+localStorage.setItem('richcan_role', result.role || '');
+
+
+
+    /*
+     * Login is already verified.
+     *
+     * Do NOT call checkSession()
+     * again here.
+     */
+    loadProtectedPage(
+      result.sessionToken,
+      'index'
+    );
+
+  })
+  .catch(function(error) {
+
+    console.error(
+      'Failed to save session token:',
+      error
+    );
+
+    message.className =
+      'message error';
+
+    message.innerText =
+      'Unable to save session. Please try again.';
+
+  });
+
+
+ 
+
+
+            } else {
+
+
+              button.disabled =
+                false;
+
+
+              button.innerText =
+                'Login';
+
+
+              message.className =
+                'message error';
+
+
+              message.innerText =
+                result &&
+                result.message
+                  ? result.message
+                  : 'Invalid username or password.';
+
+            }
+
+          }
+        )
+
+
+        .withFailureHandler(
+          function(error) {
+
+            console.error(
+              'Login failed:',
+              error
+            );
+
+
+            button.disabled =
+              false;
+
+
+            button.innerText =
+              'Login';
+
+
+            message.className =
+              'message error';
+
+
+            message.innerText =
+              'Login error: ' +
+              (
+                error &&
+                error.message
+                  ? error.message
+                  : error
+              );
+
+          }
+        )
+
+
+        .loginUser(
+          username,
+          password
+        );
+
+    }
+
+
+    /* =====================================================
+       Navigation From Protected Pages
+       ===================================================== */
+
+    window.addEventListener(
+      'message',
+      function(event) {
+
+        if (
+          !event.data
+        ) {
+
+          return;
+
+        }
+
+
+        if (
+          event.data.type !==
+          'RICHCAN_NAVIGATE'
+        ) {
+
+          return;
+
+        }
+
+
+        const page =
+          event.data.page;
+        
+       
+
+
+        if (
+          page !== 'index' &&
+          page !== 'boiler' &&
+          page !== 'fireplace' &&
+          page !== 'createJob' &&
+          page !== 'createCustomer' &&
+          page !== 'myJobs' &&
+          page !== 'customerManagement' &&
+          page !== 'couponManagement'
+
+        ) {
+
+          console.error(
+            'Invalid navigation request:',
+            page
+          );
+
+          return;
+
+        }
+
+
+        console.log(
+          'Navigation request:',
+          page
+        );
+
+
+        getSessionToken()
+  .then(function(token) {
+
+    if (!token) {
+
+      console.error(
+        'No session token available.'
+      );
+
+      showSessionExpired();
+
+      return;
+
+    }
+
+    
+
+    loadProtectedPage(
+      token,
+      page
+    );
+
+  })
+  .catch(function(error) {
+
+    console.error(
+      'Failed to read session token:',
+      error
+    );
+
+    showSessionExpired();
+
+  });
+
+
+
+      }
+    );
+
+/* =====================================================
+   Validate Session Request From Child Page
+   ===================================================== */
+
+window.addEventListener(
+  'message',
+  function(event) {
+
+    if (
+      !event.data ||
+      event.data.type !==
+        'RICHCAN_VALIDATE_SESSION'
+    ) {
+
+      return;
+
+    }
+
+    const token =
+      event.data.token;
+
+    console.log(
+      'Session validation request received.'
+    );
+
+    if (!token) {
+
+      console.error(
+        'Session validation request has no token.'
+      );
+
+      return;
+
+    }
+
+    google.script.run
+
+      .withSuccessHandler(
+        function(result) {
+
+          console.log(
+            'Session validation result:',
+            result
+          );
+
+          /*
+           * Send result back to child iframe.
+           */
+
+          if (
+            event.source
+          ) {
+
+            event.source.postMessage(
+              {
+                type:
+                  'RICHCAN_SESSION_RESULT',
+
+                result:
+                  result
+              },
+              '*'
+            );
+
+          }
+
+        }
+      )
+
+      .withFailureHandler(
+        function(error) {
+
+          console.error(
+            'Session validation failed:',
+            error
+          );
+
+          if (
+            event.source
+          ) {
+
+            event.source.postMessage(
+              {
+                type:
+                  'RICHCAN_SESSION_RESULT',
+
+                result: {
+                  loggedIn: false
+                }
+              },
+              '*'
+            );
+
+          }
+
+        }
+      )
+
+      .checkSession(
+        token
+      );
+
+  }
+);
+
+
+/* =====================================================
+   Submit Service Request From Child Page
+   ===================================================== */
+
+window.addEventListener(
+  'message',
+  function(event) {
+
+    if (
+      !event.data ||
+      event.data.type !==
+        'RICHCAN_SUBMIT_SERVICE'
+    ) {
+
+      return;
+
+    }
+
+    const data =
+      event.data.data;
+
+    const sessionToken =
+      event.data.sessionToken;
+
+
+    console.log(
+      'Service submission request received from child page.'
+    );
+
+
+    if (!data || !sessionToken) {
+
+      console.error(
+        'Service submission request is missing data or session token.'
+      );
+
+      if (event.source) {
+
+        event.source.postMessage(
+          {
+            type:
+              'RICHCAN_SUBMIT_RESULT',
+
+            result: {
+              success: false,
+              message:
+                'Invalid service submission request.'
+            }
+          },
+          '*'
+        );
+
+      }
+
+      return;
+
+    }
+
+
+    google.script.run
+
+      .withSuccessHandler(
+        function(result) {
+
+          console.log(
+            'submitService result:',
+            result
+          );
+
+          if (event.source) {
+
+            event.source.postMessage(
+              {
+                type:
+                  'RICHCAN_SUBMIT_RESULT',
+
+                result:
+                  result
+              },
+              '*'
+            );
+
+          }
+
+        }
+      )
+
+      .withFailureHandler(
+        function(error) {
+
+          console.error(
+            'submitService failed:',
+            error
+          );
+
+          if (event.source) {
+
+            event.source.postMessage(
+              {
+                type:
+                  'RICHCAN_SUBMIT_RESULT',
+
+                result: {
+                  success: false,
+
+                  message:
+                    'Submission failed: ' +
+                    error.message
+                }
+              },
+              '*'
+            );
+
+          }
+
+        }
+      )
+
+      .submitService(
+        data,
+        sessionToken
+      );
+
+  }
+);
+
+/* =====================================================
+   Get Config Request From Child Page
+   ===================================================== */
+
+window.addEventListener(
+  'message',
+  function(event) {
+
+    if (
+      !event.data ||
+      event.data.type !==
+        'RICHCAN_GET_CONFIG'
+    ) {
+
+      return;
+
+    }
+
+    console.log(
+      'Configuration request received.'
+    );
+
+    google.script.run
+
+      .withSuccessHandler(
+        function(config) {
+
+          console.log(
+            'Configuration loaded.'
+          );
+
+          if (event.source) {
+
+            event.source.postMessage(
+              {
+                type:
+                  'RICHCAN_CONFIG_RESULT',
+
+                config:
+                  config
+              },
+              '*'
+            );
+
+          }
+
+        }
+      )
+
+      .withFailureHandler(
+        function(error) {
+
+          console.error(
+            'Unable to load configuration:',
+            error
+          );
+
+          if (event.source) {
+
+            event.source.postMessage(
+              {
+                type:
+                  'RICHCAN_CONFIG_RESULT',
+
+                config:
+                  null
+              },
+              '*'
+            );
+
+          }
+
+        }
+      )
+
+      .getConfig();
+
+  }
+);
+
+/* =====================================================
+   CREATE JOB RELAY
+   Child Page → Login → Code.gs
+   ===================================================== */
+
+window.addEventListener(
+  'message',
+  function(event) {
+
+    if (
+      !event.data ||
+      event.data.type !==
+        'RICHCAN_CREATE_JOB'
+    ) {
+      return;
+    }
+
+
+    const data =
+      event.data.data || {};
+
+
+    const requestId =
+      event.data.requestId;
+
+
+    console.log(
+      'Create Job request received:',
+      data,
+      'requestId:',
+      requestId
+    );
+
+
+    /*
+     * Call Code.gs
+     */
+
+    google.script.run
+
+      .withSuccessHandler(
+        function(result) {
+
+          console.log(
+            'Create Job completed:',
+            result
+          );
+
+
+          /*
+           * Send result back to
+           * createJob.html
+           */
+
+          if (event.source) {
+
+            event.source.postMessage(
+              {
+
+                type:
+                  'RICHCAN_CREATE_JOB_RESULT',
+
+                result:
+                  result,
+
+                requestId:
+                  requestId
+
+              },
+              '*'
+            );
+
+          }
+
+        }
+      )
+
+
+      .withFailureHandler(
+        function(error) {
+
+          console.error(
+            'Create Job failed:',
+            error
+          );
+
+
+          /*
+           * Send error back to
+           * createJob.html
+           */
+
+          if (event.source) {
+
+            event.source.postMessage(
+              {
+
+                type:
+                  'RICHCAN_CREATE_JOB_RESULT',
+
+                result: {
+
+                  success: false,
+
+                  message:
+                    error &&
+                    error.message
+                      ? error.message
+                      : 'Unable to create job.'
+
+                },
+
+                requestId:
+                  requestId
+
+              },
+              '*'
+            );
+
+          }
+
+        }
+      )
+
+
+      /*
+       * Code.gs function
+       */
+
+      .createJob(
+        data
+      );
+
+  }
+);
+
+/** job update and referral validate **/
+
+
+/*******************************************************
+ * RICHCAN_UPDATE_MY_JOB
+ * My Jobs → login.html → updateMyJob()
+ *******************************************************/
+
+window.addEventListener(
+  'message',
+  function(event) {
+
+    if (
+      !event.data ||
+      event.data.type !==
+        'RICHCAN_UPDATE_MY_JOB'
+    ) {
+
+      return;
+
+    }
+
+
+    const data =
+      event.data.data || {};
+
+    const requestId =
+      event.data.requestId;
+
+      const token =
+  event.data.token || '';
+
+  console.log(
+  'UPDATE MY JOB TOKEN LENGTH:',
+  token ? token.length : 0
+);
+
+
+    console.log(
+      'UPDATE MY JOB REQUEST RECEIVED:',
+      data,
+      'requestId:',
+      requestId
+    );
+
+
+    google.script.run
+
+      .withSuccessHandler(
+        function(result) {
+
+          console.log(
+            'UPDATE MY JOB RESULT:',
+            result
+          );
+
+
+          if (event.source) {
+
+            event.source.postMessage(
+              {
+
+                type:
+                  'RICHCAN_UPDATE_JOB_RESULT',
+
+                result:
+                  result,
+
+                requestId:
+                  requestId
+
+              },
+              '*'
+            );
+
+          }
+
+        }
+      )
+
+
+      .withFailureHandler(
+        function(error) {
+
+          console.error(
+            'UPDATE MY JOB ERROR:',
+            error
+          );
+
+
+          if (event.source) {
+
+            event.source.postMessage(
+              {
+
+                type:
+                  'RICHCAN_UPDATE_JOB_RESULT',
+
+                result: {
+
+                  success:
+                    false,
+
+                  message:
+                    error &&
+                    error.message
+                      ? error.message
+                      : String(error)
+
+                },
+
+                requestId:
+                  requestId
+
+              },
+              '*'
+            );
+
+          }
+
+        }
+      )
+
+
+      .updateMyJob(
+        token,
+        data
+      );
+
+  }
+);
+
+
+/*******************************************************
+ * RICHCAN_VALIDATE_REFERRAL_CODE
+ *******************************************************/
+
+window.addEventListener(
+  'message',
+  function(event) {
+
+    if (
+      !event.data ||
+      event.data.type !==
+        'RICHCAN_VALIDATE_REFERRAL_CODE'
+    ) {
+
+      return;
+
+    }
+
+
+    const referralCode =
+      event.data.referralCode || '';
+
+    const requestId =
+      event.data.requestId;
+
+
+    google.script.run
+
+      .withSuccessHandler(
+        function(result) {
+
+          if (event.source) {
+
+            event.source.postMessage(
+              {
+
+                type:
+                  'RICHCAN_VALIDATE_REFERRAL_CODE_RESULT',
+
+                result:
+                  result,
+
+                requestId:
+                  requestId
+
+              },
+              '*'
+            );
+
+          }
+
+        }
+      )
+
+
+      .withFailureHandler(
+        function(error) {
+
+          if (event.source) {
+
+            event.source.postMessage(
+              {
+
+                type:
+                  'RICHCAN_VALIDATE_REFERRAL_CODE_RESULT',
+
+                result: {
+
+                  success:
+                    false,
+
+                  valid:
+                    false,
+
+                  message:
+                    error &&
+                    error.message
+                      ? error.message
+                      : 'Unable to validate Referral Code.'
+
+                },
+
+                requestId:
+                  requestId
+
+              },
+              '*'
+            );
+
+          }
+
+        }
+      )
+
+
+      .validateReferralCode(
+        referralCode
+      );
+
+  }
+);
+
+
+
+
+
+/* =====================================================
+   Logout Request From Protected Page
+   ===================================================== */
+
+window.addEventListener(
+  'message',
+  function(event) {
+
+    if (
+      !event.data ||
+      event.data.type !==
+        'RICHCAN_LOGOUT'
+    ) {
+
+      return;
+
+    }
+
+
+    console.log(
+      'Logout request received.'
+    );
+
+
+getSessionToken()
+  .then(function(token) {
+
+    clearLocalSession();
+
+    if (!token) {
+
+      showLogin();
+
+      return;
+
+    }
+
+    google.script.run
+
+      .withSuccessHandler(
+        function(result) {
+
+          showLogin();
+
+        }
+      )
+
+      .withFailureHandler(
+        function(error) {
+
+          console.error(
+            'Logout failed:',
+            error
+          );
+
+          /*
+           * Local session is already cleared,
+           * so still return to login.
+           */
+
+          showLogin();
+
+        }
+      )
+
+      .logoutUser(
+        token
+      );
+
+  })
+  .catch(function(error) {
+
+    console.error(
+      'Failed to read session token:',
+      error
+    );
+
+    clearLocalSession();
+    showLogin();
+
+  });
+  }
+);
+
+/* =====================================================
+   Load Protected Page
+   ===================================================== */
+function loadProtectedPage(
+  token,
+  page
+) {
+
+  if (!token) {
+
+    console.error(
+      'loadProtectedPage(): missing token.'
+    );
+
+    clearLocalSession();
+
+    showSessionExpired();
+
+    return;
+  }
+
+
+  console.log(
+    'Loading protected page:',
+    page
+  );
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        console.log(
+          'getProtectedPage result:',
+          result
+        );
+
+
+        if (
+        !result ||
+        !result.success
+      ) {
+
+        console.error(
+          'Unable to load protected page:',
+          result
+        );
+
+
+        /*
+         * ==========================================
+         * SESSION EXPIRED
+         * ==========================================
+         */
+
+        if (
+          result &&
+          result.error === 'SESSION_EXPIRED'
+        ) {
+
+          clearLocalSession();
+
+          showSessionExpired();
+
+          return;
+
+        }
+
+
+        /*
+         * ==========================================
+         * ACCESS DENIED
+         * ==========================================
+         */
+
+        if (
+          result &&
+          result.error === 'ACCESS_DENIED'
+        ) {
+
+          alert(
+            'Access Denied\n\n' +
+            'You do not have permission to access this page.'
+          );
+
+          return;
+
+        }
+
+        /*
+           * Other error
+           */
+
+          alert(
+            result &&
+            result.message
+              ? result.message
+              : 'Unable to load protected page.'
+          );
+
+          return;
+
+        }
+
+
+
+
+        /*
+         * Create iframe
+         */
+
+        const iframe =
+          document.createElement(
+            'iframe'
+          );
+
+
+        iframe.style.width =
+          '100%';
+
+        iframe.style.height =
+          '100%';
+
+        iframe.style.border =
+          '0';
+
+        iframe.style.display =
+          'block';
+
+
+        iframe.setAttribute(
+          'frameborder',
+          '0'
+        );
+
+
+        iframe.setAttribute(
+          'allow',
+          'clipboard-write'
+        );
+
+
+        /*
+         * ---------------------------------------------
+         * Prepare session message
+         * ---------------------------------------------
+         */
+
+        function sendSessionMessage() {
+
+          console.log(
+            'Sending session to iframe:',
+            page
+          );
+
+
+          try {
+
+            iframe.contentWindow.postMessage(
+              {
+                type:
+                  'RICHCAN_SESSION',
+
+                token:
+                  token,
+
+                user:
+                  result.user || {}
+
+              },
+              '*'
+            );
+
+          } catch (error) {
+
+            console.error(
+              'Failed to send session message:',
+              error
+            );
+
+          }
+        }
+
+
+        /*
+         * ---------------------------------------------
+         * Send Job Sheet initialization
+         * ---------------------------------------------
+         */
+
+        
+
+
+        /*
+         * ---------------------------------------------
+         * iframe loaded
+         * ---------------------------------------------
+         */
+
+        iframe.onload =
+          function() {
+
+            console.log(
+              'Protected iframe loaded:',
+              page
+            );
+
+
+            /*
+             * Send Session
+             */
+
+            sendSessionMessage();
+
+
+            
+
+          };
+
+
+        /*
+         * ---------------------------------------------
+         * Load protected HTML
+         * ---------------------------------------------
+         */
+
+        iframe.srcdoc =
+          result.html;
+
+
+        /*
+         * ---------------------------------------------
+         * Put iframe into App Shell
+         * ---------------------------------------------
+         */
+
+        const appContent =
+          document.getElementById(
+            'appContent'
+          );
+
+
+        appContent.innerHTML =
+          '';
+
+
+        appContent.appendChild(
+          iframe
+        );
+
+
+        /*
+         * ---------------------------------------------
+         * Backup #1
+         * ---------------------------------------------
+         *
+         * srcdoc/onload timing can vary.
+         */
+
+        setTimeout(
+          function() {
+
+            console.log(
+              'Backup session message:',
+              page
+            );
+
+
+            sendSessionMessage();
+
+
+            /*
+             * Also resend Job Sheet ID
+             */
+
+           
+
+          },
+          300
+        );
+
+
+        /*
+         * ---------------------------------------------
+         * Backup #2
+         * ---------------------------------------------
+         */
+
+        setTimeout(
+          function() {
+
+            console.log(
+              'Second backup session message:',
+              page
+            );
+
+
+            sendSessionMessage();
+
+
+            /*
+             * Also resend Job Sheet ID
+             */
+
+            
+
+          },
+          1000
+        );
+
+
+        /*
+         * ---------------------------------------------
+         * Show App
+         * ---------------------------------------------
+         */
+
+        document.getElementById(
+          'loginScreen'
+        ).style.display =
+          'none';
+
+
+        document.getElementById(
+          'sessionExpired'
+        ).style.display =
+          'none';
+
+
+        document.getElementById(
+          'appScreen'
+        ).style.display =
+          'block';
+
+      }
+    )
+
+
+    .withFailureHandler(function(error) {
+  console.error('Unable to load protected page:', error);
+
+  alert('Unable to load the page. Please try again.');
+})
+
+
+    .getProtectedPage(
+      token,
+      page
+    );
+
+}
+
+
+    
+
+/** CREATE CUSTOMER RELAY */
+
+window.addEventListener(
+  'message',
+  function(event) {
+
+    if (
+      !event.data ||
+      event.data.type !==
+        'RICHCAN_CREATE_CUSTOMER'
+    ) {
+      return;
+    }
+
+
+    const data =
+      event.data.data || {};
+
+
+    const requestId =
+      event.data.requestId;
+
+
+    console.log(
+      'Create Customer request received:',
+      data,
+      'requestId:',
+      requestId
+    );
+
+
+    google.script.run
+
+      .withSuccessHandler(
+        function(result) {
+
+          console.log(
+            'Create Customer completed:',
+            result
+          );
+
+
+          if (event.source) {
+
+            event.source.postMessage(
+              {
+
+                type:
+                  'RICHCAN_CREATE_CUSTOMER_RESULT',
+
+                result:
+                  result,
+
+                requestId:
+                  requestId
+
+              },
+              '*'
+            );
+
+          }
+
+        }
+      )
+
+
+      .withFailureHandler(
+        function(error) {
+
+          console.error(
+            'Create Customer failed:',
+            error
+          );
+
+
+          if (event.source) {
+
+            event.source.postMessage(
+              {
+
+                type:
+                  'RICHCAN_CREATE_CUSTOMER_RESULT',
+
+                success:
+                  false,
+
+                error:
+                  error &&
+                  error.message
+                    ? error.message
+                    : 'Unable to create customer.',
+
+                requestId:
+                  requestId
+
+              },
+              '*'
+            );
+
+          }
+
+        }
+      )
+
+
+      .createCustomer(
+        data
+      );
+
+  }
+);
+
+
+/** UPDATE CUSTOMER RELAY */
+
+window.addEventListener(
+  'message',
+  function(event) {
+
+    if (
+      !event.data ||
+      event.data.type !==
+        'RICHCAN_UPDATE_CUSTOMER'
+    ) {
+      return;
+    }
+
+
+    const data =
+      event.data.data || {};
+
+
+    const requestId =
+      event.data.requestId;
+
+
+    console.log(
+      'Update Customer request received:',
+      data,
+      'requestId:',
+      requestId
+    );
+
+
+    google.script.run
+
+      .withSuccessHandler(
+        function(result) {
+
+          console.log(
+            'Update Customer completed:',
+            result
+          );
+
+
+          if (event.source) {
+
+            event.source.postMessage(
+              {
+
+                type:
+                  'RICHCAN_UPDATE_CUSTOMER_RESULT',
+
+                result:
+                  result,
+
+                requestId:
+                  requestId
+
+              },
+              '*'
+            );
+
+          }
+
+        }
+      )
+
+
+      .withFailureHandler(
+        function(error) {
+
+          console.error(
+            'Update Customer failed:',
+            error
+          );
+
+
+          if (event.source) {
+
+            event.source.postMessage(
+              {
+
+                type:
+                  'RICHCAN_UPDATE_CUSTOMER_RESULT',
+
+                success:
+                  false,
+
+                error:
+                  error &&
+                  error.message
+                    ? error.message
+                    : 'Unable to update customer.',
+
+                requestId:
+                  requestId
+
+              },
+              '*'
+            );
+
+          }
+
+        }
+      )
+
+
+      .updateCustomer(
+        data
+      );
+
+  }
+);
+
+
+
+
+/* =====================================================
+   GET relays
+   ===================================================== */
+window.addEventListener(
+  'message',
+  function(event) {
+
+    console.log(
+      'PARENT MESSAGE RECEIVED:',
+      event.data
+    );
+    /* =================================================
+       RICHCAN SEARCH CUSTOMERS 
+       ================================================= */
+    if (
+      event.data &&
+      event.data.type ===
+        'RICHCAN_SEARCH_CUSTOMERS'
+    ) {
+
+      const query =
+        event.data.query || '';
+
+      const requestId =
+        event.data.requestId;
+
+      console.log(
+        'customer search request:',
+        query,
+        'requestId:',
+        requestId
+      );
+
+      google.script.run
+
+        .withSuccessHandler(
+          function(customers) {
+
+            console.log(
+              'customer search completed:',
+              customers
+            );
+
+            if (event.source) {
+
+              event.source.postMessage(
+                {
+                  type:
+                    'RICHCAN_SEARCH_CUSTOMERS_RESULT',
+
+                  customers:
+                    customers || [],
+
+                  requestId:
+                    requestId
+                },
+                '*'
+              );
+
+            }
+
+          }
+        )
+
+        .withFailureHandler(
+          function(error) {
+
+            console.error(
+              ' customer search failed:',
+              error
+            );
+
+            if (event.source) {
+
+              event.source.postMessage(
+                {
+                  type:
+                    'RICHCAN_SEARCH_CUSTOMERS_RESULT',
+
+                  customers:
+                    [],
+
+                  requestId:
+                    requestId,
+
+                  error:
+                    error &&
+                    error.message
+                      ? error.message
+                      : String(error)
+                },
+                '*'
+              );
+
+            }
+
+          }
+        )
+
+        .searchCustomers(
+          query
+        );
+
+      return;
+    }
+
+    /* =================================================
+       GET AVAILABLE CREDIT
+       ================================================= */
+    if (
+      event.data &&
+      event.data.type ===
+        'RICHCAN_GET_AVAILABLE_CREDIT'
+    ) {
+
+      console.log(
+        'GET AVAILABLE CREDIT REQUEST RECEIVED'
+      );
+
+      const customerId =
+        event.data.customerId || '';
+
+      const requestId =
+        event.data.requestId;
+
+      google.script.run
+
+        .withSuccessHandler(function(credit) {
+
+          console.log(
+            'getCustomerAvailableCredit result:',
+            credit
+          );
+
+          if (event.source) {
+
+            event.source.postMessage({
+
+              type:
+                'RICHCAN_GET_AVAILABLE_CREDIT_RESULT',
+
+              availableCredit:
+                Number(credit || 0),
+
+              success:
+                true,
+
+              requestId:
+                requestId
+
+            }, '*');
+
+          }
+
+        })
+
+        .withFailureHandler(function(error) {
+
+          console.error(
+            'getCustomerAvailableCredit failed:',
+            error
+          );
+
+          if (event.source) {
+
+            event.source.postMessage({
+
+              type:
+                'RICHCAN_GET_AVAILABLE_CREDIT_RESULT',
+
+              availableCredit:
+                0,
+
+              success:
+                false,
+
+              message:
+                error && error.message
+                  ? error.message
+                  : 'Unable to get available credit.',
+
+              requestId:
+                requestId
+
+            }, '*');
+
+          }
+
+        })
+
+        .getCustomerAvailableCredit(
+          customerId
+        );
+
+      return;
+    }
+
+/*******************************************************
+ * GET JOB
+ *******************************************************/
+
+/* =================================================
+   GET JOB
+   ================================================= */
+if (
+  event.data &&
+  event.data.type ===
+    'RICHCAN_GET_JOB'
+) {
+
+  console.log(
+    'GET JOB REQUEST RECEIVED:',
+    event.data
+  );
+
+
+  const jobId =
+    event.data.jobId;
+
+  const requestId =
+    event.data.requestId;
+
+
+  console.log(
+    'Getting Job:',
+    jobId,
+    'requestId:',
+    requestId
+  );
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        console.log(
+          'getJob result:',
+          result
+        );
+
+
+        if (event.source) {
+
+          event.source.postMessage(
+            {
+              type:
+                'RICHCAN_GET_JOB_RESULT',
+
+              requestId:
+                requestId,
+
+              result:
+                result
+            },
+            '*'
+          );
+
+        }
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        console.error(
+          'getJob failed:',
+          error
+        );
+
+
+        if (event.source) {
+
+          event.source.postMessage(
+            {
+              type:
+                'RICHCAN_GET_JOB_RESULT',
+
+              requestId:
+                requestId,
+
+              result:
+                {
+                  success: false,
+
+                  message:
+                    error &&
+                    error.message
+                      ? error.message
+                      : String(error)
+                }
+            },
+            '*'
+          );
+
+        }
+
+      }
+    )
+
+    .getJob(
+      jobId
+    );
+
+
+  return;
+}
+
+
+/*************************************************
+ * RICHCAN_SEARCH_COUPONS
+ * Coupon Management → login.html → Code.gs
+ *************************************************/
+
+if (
+  event.data &&
+  event.data.type ===
+    'RICHCAN_SEARCH_COUPONS'
+) {
+
+  const query =
+    event.data.query || '';
+
+  const requestId =
+    event.data.requestId;
+
+  const token =
+    event.data.token || '';
+
+  console.log(
+    'Search Coupons request:',
+    query,
+    'requestId:',
+    requestId
+  );
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(coupons) {
+
+        console.log(
+          'Search Coupons completed:',
+          coupons
+        );
+
+        if (event.source) {
+
+          event.source.postMessage(
+            {
+              type:
+                'RICHCAN_SEARCH_COUPONS_RESULT',
+
+              coupons:
+                coupons || [],
+
+              requestId:
+                requestId
+            },
+            '*'
+          );
+
+        }
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        console.error(
+          'Search Coupons failed:',
+          error
+        );
+
+        if (event.source) {
+
+          event.source.postMessage(
+            {
+              type:
+                'RICHCAN_SEARCH_COUPONS_RESULT',
+
+              coupons: [],
+
+              error:
+                error &&
+                error.message
+                  ? error.message
+                  : 'Unable to search coupons.',
+
+              requestId:
+                requestId
+            },
+            '*'
+          );
+
+        }
+
+      }
+    )
+
+    .searchCoupons(
+      token,
+      query
+    );
+
+  return;
+}
+
+/*************************************************
+ * RICHCAN_UPDATE_COUPON
+ * Coupon Management → login.html → Code.gs
+ *************************************************/
+
+if (
+  event.data &&
+  event.data.type ===
+    'RICHCAN_UPDATE_COUPON'
+) {
+
+  const data =
+    event.data.data || {};
+
+  const requestId =
+    event.data.requestId;
+
+  const token =
+    event.data.token || '';
+
+  console.log(
+    'Update Coupon request received:',
+    data,
+    'requestId:',
+    requestId
+  );
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        console.log(
+          'Update Coupon completed:',
+          result
+        );
+
+        if (event.source) {
+
+          event.source.postMessage(
+            {
+              type:
+                'RICHCAN_UPDATE_COUPON_RESULT',
+
+              result:
+                result,
+
+              requestId:
+                requestId
+            },
+            '*'
+          );
+
+        }
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        console.error(
+          'Update Coupon failed:',
+          error
+        );
+
+        if (event.source) {
+
+          event.source.postMessage(
+            {
+              type:
+                'RICHCAN_UPDATE_COUPON_RESULT',
+
+              result: {
+                success: false
+              },
+
+              error:
+                error &&
+                error.message
+                  ? error.message
+                  : 'Unable to update coupon.',
+
+              requestId:
+                requestId
+            },
+            '*'
+          );
+
+        }
+
+      }
+    )
+
+    .updateCoupon(
+      token,
+      data
+    );
+
+  return;
+}
+
+
+/*************************************************
+ * RICHCAN_DOWNLOAD_COUPON
+ * Coupon Management → login.html → Code.gs
+ *************************************************/
+
+if (
+  event.data &&
+  event.data.type ===
+    'RICHCAN_DOWNLOAD_COUPON'
+) {
+
+  const data =
+    event.data.data || {};
+
+  const requestId =
+    event.data.requestId;
+
+  const token =
+    event.data.token || '';
+
+  console.log(
+    'Download Coupon request received:',
+    data,
+    'requestId:',
+    requestId
+  );
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        if (event.source) {
+
+          event.source.postMessage(
+            {
+              type:
+                'RICHCAN_DOWNLOAD_COUPON_RESULT',
+
+              result:
+                result,
+
+              requestId:
+                requestId
+            },
+            '*'
+          );
+
+        }
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        if (event.source) {
+
+          event.source.postMessage(
+            {
+              type:
+                'RICHCAN_DOWNLOAD_COUPON_RESULT',
+
+              result: {
+                success: false
+              },
+
+              error:
+                error &&
+                error.message
+                  ? error.message
+                  : 'Unable to download coupon.',
+
+              requestId:
+                requestId
+            },
+            '*'
+          );
+
+        }
+
+      }
+    )
+
+    .downloadCoupon(
+      token,
+      data
+    );
+
+  return;
+}
+
+/*************************************************
+ * RICHCAN_REGENERATE_COUPON_PNG
+ * Coupon Management → login.html → Code.gs
+ *************************************************/
+
+if (
+  event.data &&
+  event.data.type ===
+    'RICHCAN_REGENERATE_COUPON_PNG'
+) {
+
+  const data =
+    event.data.data || {};
+
+  const requestId =
+    event.data.requestId;
+
+  const token =
+    event.data.token || '';
+
+  console.log(
+    'Regenerate Coupon PNG request received:',
+    data,
+    'requestId:',
+    requestId
+  );
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        if (event.source) {
+
+          event.source.postMessage(
+            {
+              type:
+                'RICHCAN_REGENERATE_COUPON_PNG_RESULT',
+
+              result:
+                result,
+
+              requestId:
+                requestId
+            },
+            '*'
+          );
+
+        }
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        if (event.source) {
+
+          event.source.postMessage(
+            {
+              type:
+                'RICHCAN_REGENERATE_COUPON_PNG_RESULT',
+
+              result: {
+                success: false
+              },
+
+              error:
+                error &&
+                error.message
+                  ? error.message
+                  : 'Unable to regenerate coupon PNG.',
+
+              requestId:
+                requestId
+            },
+            '*'
+          );
+
+        }
+
+      }
+    )
+
+    .regenerateCouponPng(
+      token,
+      data
+    );
+
+  return;
+}
+
+    /* =================================================
+       GET MY JOBS
+       ================================================= */
+    if (
+      event.data &&
+      event.data.type ===
+        'RICHCAN_GET_MY_JOBS'
+    ) {
+
+      console.log(
+        'GET MY JOBS REQUEST RECEIVED'
+      );
+      const requestId =
+  event.data.requestId;
+
+const token =
+  event.data.token || '';
+
+console.log(
+  'My Jobs requestId:',
+  requestId
+);
+
+console.log(
+  'GET MY JOBS token length:',
+  token.length
+);
+
+console.log(
+  'GET MY JOBS token exists:',
+  !!token
+);
+
+      
+
+      google.script.run
+
+        .withSuccessHandler(
+          function(result) {
+
+            console.log(
+              'getMyJobs result:',
+              result
+            );
+
+            if (event.source) {
+
+              event.source.postMessage(
+                {
+                  type:
+                    'RICHCAN_GET_MY_JOBS_RESULT',
+
+                  result:
+                    result,
+
+                  requestId:
+                    requestId
+                },
+                '*'
+              );
+
+            }
+
+          }
+        )
+
+        .withFailureHandler(
+          function(error) {
+
+            console.error(
+              'getMyJobs failed:',
+              error
+            );
+
+            if (event.source) {
+
+              event.source.postMessage(
+                {
+                  type:
+                    'RICHCAN_GET_MY_JOBS_RESULT',
+
+                  result:
+                    {
+                      success:
+                        false,
+
+                      message:
+                        error &&
+                        error.message
+                          ? error.message
+                          : 'Unable to load jobs.'
+                    },
+
+                  requestId:
+                    requestId
+                },
+                '*'
+              );
+
+            }
+
+          }
+        )
+
+        .getMyJobs(token);
+
+      return;
+    }
+
+/* =====================================================
+   RICHCAN_GENERATE_CUSTOMER_COUPON
+   Customer Management → login.html → Code.gs
+   ===================================================== */
+
+if (
+  event.data &&
+  event.data.type ===
+    'RICHCAN_GENERATE_CUSTOMER_COUPON'
+) {
+
+  const data =
+    event.data.data || {};
+
+  const requestId =
+    event.data.requestId;
+
+
+  console.log(
+    'Generate Customer Coupon request received:',
+    data,
+    'requestId:',
+    requestId
+  );
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        console.log(
+          'Generate Customer Coupon completed:',
+          result
+        );
+
+
+        if (event.source) {
+
+          event.source.postMessage(
+            {
+
+              type:
+                'RICHCAN_GENERATE_CUSTOMER_COUPON_RESULT',
+
+              result:
+                result,
+
+              requestId:
+                requestId
+
+            },
+            '*'
+          );
+
+        }
+
+      }
+    )
+
+
+    .withFailureHandler(
+      function(error) {
+
+        console.error(
+          'Generate Customer Coupon failed:',
+          error
+        );
+
+
+        if (event.source) {
+
+          event.source.postMessage(
+            {
+
+              type:
+                'RICHCAN_GENERATE_CUSTOMER_COUPON_RESULT',
+
+              result: {
+
+                success:
+                  false,
+
+                message:
+                  error &&
+                  error.message
+                    ? error.message
+                    : String(error)
+
+              },
+
+              requestId:
+                requestId
+
+            },
+            '*'
+          );
+
+        }
+
+      }
+    )
+
+
+    .generateCustomerCoupon(
+      data
+    );
+
+
+  return;
+
+}
+
+/* =====================================================
+   RICHCAN_DOWNLOAD_CUSTOMER_COUPON
+   Customer Management → login.html → Code.gs
+   ===================================================== */
+
+if (
+  event.data &&
+  event.data.type ===
+    'RICHCAN_DOWNLOAD_CUSTOMER_COUPON'
+) {
+
+  const data =
+    event.data.data || {};
+
+  const requestId =
+    event.data.requestId;
+
+
+  console.log(
+    'Download Customer Coupon request received:',
+    data,
+    'requestId:',
+    requestId
+  );
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        console.log(
+          'Download Customer Coupon completed:',
+          result
+        );
+
+
+        if (event.source) {
+
+          event.source.postMessage(
+            {
+
+              type:
+                'RICHCAN_DOWNLOAD_CUSTOMER_COUPON_RESULT',
+
+              result:
+                result,
+
+              requestId:
+                requestId
+
+            },
+            '*'
+          );
+
+        }
+
+      }
+    )
+
+
+    .withFailureHandler(
+      function(error) {
+
+        console.error(
+          'Download Customer Coupon failed:',
+          error
+        );
+
+
+        if (event.source) {
+
+          event.source.postMessage(
+            {
+
+              type:
+                'RICHCAN_DOWNLOAD_CUSTOMER_COUPON_RESULT',
+
+              result: {
+
+                success:
+                  false,
+
+                message:
+                  error &&
+                  error.message
+                    ? error.message
+                    : String(error)
+
+              },
+
+              requestId:
+                requestId
+
+            },
+            '*'
+          );
+
+        }
+
+      }
+    )
+
+
+    .downloadCustomerCoupon(
+      data
+    );
+
+
+  return;
+
+}
+
+
+
+
+    /**event function 结束*/
+
+  }
+);
+
+
+
+
+
+
+
+
+    /* =====================================================
+       Loading
+       ===================================================== */
+
+
+
+    /* =====================================================
+       Login Screen
+       ===================================================== */
+
+function showLogin() {
+
+  document.getElementById(
+    'loginScreen'
+  ).style.display =
+    'block';
+
+  document.getElementById(
+    'appScreen'
+  ).style.display =
+    'none';
+
+  document.getElementById(
+    'sessionExpired'
+  ).style.display =
+    'none';
+
+  const button =
+    document.getElementById(
+      'loginButton'
+    );
+
+  if (button) {
+
+    button.disabled =
+      false;
+
+    button.innerText =
+      'Login';
+
+  }
+
+}
+
+    /* =====================================================
+       Session Expired
+       ===================================================== */
+
+ function showSessionExpired() {
+
+  document.getElementById(
+    'loginScreen'
+  ).style.display =
+    'none';
+
+  document.getElementById(
+    'appScreen'
+  ).style.display =
+    'none';
+
+  document.getElementById(
+    'sessionExpired'
+  ).style.display =
+    'block';
+
+}
+
+
+    /* =====================================================
+       Clear Local Session
+       ===================================================== */
+      
+function clearLocalSession() {
+
+  clearSessionToken()
+    .catch(function(error) {
+
+      console.error(
+        'Failed to clear session token:',
+        error
+      );
+
+    });
+
+  localStorage.removeItem('richcan_userId');
+  localStorage.removeItem('richcan_username');
+  localStorage.removeItem('richcan_name');
+  localStorage.removeItem('richcan_role');
+
+}
+
+
+    /* =====================================================
+       Start
+       ===================================================== */
+
+    window.onload =
+      function() {
+
+        startApp();
+
+      };
+
+
+
+  </script>
+
+</body>
+
+</html>
